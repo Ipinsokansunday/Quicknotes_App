@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: quicknotes-backend
+    env: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: /app/src/notes.db
+      - key: PORT
+        value: 4000
+    healthCheckPath: /health
+    autoDeploy: true
+    buildCommand: npm install
+    startCommand: npm start
+
+  - type: web
+    name: quicknotes-frontend
+    env: static
+    plan: free
+    buildCommand: npm run build
+    staticPublishPath: /usr/share/nginx/html
+    autoDeploy: true
