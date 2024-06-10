@@ -3,7 +3,7 @@ services:
     name: quicknotes-backend
     env: docker
     plan: free
-    dockerfilePath: backend/Dockerfile
+    dockerfilePath: QuickNotes/backend/Dockerfile  # Adjusted to the actual path
     envVars:
       - key: NODE_ENV
         value: production
@@ -21,5 +21,5 @@ services:
     env: static
     plan: free
     buildCommand: npm run build
-    staticPublishPath: /usr/share/nginx/html
+    staticPublishPath: QuickNotes/frontend/build  # Adjusted to the actual path
     autoDeploy: true
